@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",          // code JS output
+    "module": "CommonJS",        // kiểu module cho Node
+    "rootDir": "./src",          // thư mục chứa file TS
+    "outDir": "./dist",          // nơi build ra file JS
+    "esModuleInterop": true,     // hỗ trợ import default từ CJS
+    "strict": true,              // bật kiểm tra chặt chẽ
+    "skipLibCheck": true,        // bỏ qua kiểm tra type trong node_modules
+    "sourceMap": true            // để debug dễ hơn
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
