@@ -62,7 +62,58 @@ function notification(message: string): string {
 }
 console.log("Notification: ", notification("You have a new message!"));
 
+//Object
+//Khai báo thông thường giống JS
+const person = {
+    name: "Gnort",
+    age: 23,
+    isAdmin: true,
+    school: "EAUT",
+    score: 3.01
+};
+//thêm type cho các key trong object
+const personTyped: {
+    name: string;
+    age: number;
+    isAdmin: boolean;
+    school: string;
+    score: number;
+} = {
+    name: "Gnort",
+    age: 23,
+    isAdmin: true,
+    school: "EAUT",
+    score: 3.01
+}
+//"?" optional: không bắt buộc phải có key đó
+const personType: {
+    name?: string;
+    age?: number;
+    isAdmin: boolean; //bắt buộc phải có
+    school?: string;
+    score?: number;
+} = {
+    isAdmin: true
+}
+console.log("Person: ", person);
 
+//Array
+const numbers: number[] = [1,2,3,4,5];
+const strings: string[] = ["a","b","c"];
+const booleans: boolean[] = [true, false, true];
+const objects: object[] = [{name: "Gnort"}, {age: 23}];
+const mixed: (string | number | boolean)[] = [1, "a", true, 2, "b", false];
+
+//Array generic
+const numbersGeneric: Array<number> = [1,2,3,4,5];
+const stringsGeneric: Array<string> = ["a","b","c"];
+const booleansGeneric: Array<boolean> = [true, false, true];
+const objectsGeneric: Array<object> = [{name: "Gnort"}, {age: 23}];
+const mixedGeneric: Array<string | number | boolean> = [1, "a", true, 2, "b", false];
+
+for (const num of numbers) {
+    console.log("Number: ", num);
+}
 
 
 
