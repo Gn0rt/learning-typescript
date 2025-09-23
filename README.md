@@ -12,4 +12,4 @@ npm run dev
 npm run start src/(file)
 ```
 
-Ex: npm run start src/file1.ts
+Ex: npm run start `src/file1.ts`
