@@ -115,6 +115,66 @@ for (const num of numbers) {
     console.log("Number: ", num);
 }
 
+//Union type
+const info: (string | number | boolean)[] = [
+    "football",
+    "basketball",
+    100,
+    false
+];
+
+const ob: {
+    name: string;
+    grade: number | string;
+    extra?: 
+    | {
+        name: string;
+    }
+    | {
+        school: string;
+    }
+}[] = [
+    {
+        name: "Bui",
+        grade: 100
+    },
+    {
+        name: "Trong",
+        grade: "200"
+    }
+]
+
+//intersection type
+//bat buoc extra phai co school va name
+const ob1: {
+    name: string;
+    grade: number | string;
+    extra?: 
+    {
+        school: string;
+    }
+    &
+    {
+        name: string;
+    }
+}[] = [
+    {
+        name: "Bui",
+        grade: 100,
+        extra: {
+            name: "Trong",
+            school: "EAUT"
+        }
+    },
+    {
+        name: "Trong",
+        grade: "200",
+        extra: {
+            name: "The",
+            school: "HDB"
+        }
+    }
+]
 
 
 
