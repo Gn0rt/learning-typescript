@@ -14,7 +14,8 @@ npm run start src/(file)
 
 Ex: npm run start `src/file1.ts`
 
-
 # Branch
-1. Basic Typescript: `typescript-baisc`
-2. Exercise Manage Students (OOP): `manage-students`
+
+1. Basic Typescript: branch `typescript-baisc`
+2. Exercise Manage Students (OOP): branch `manage-students`
+3. Exercise Manage Library (OOP): branch `manage-library`
