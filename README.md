@@ -1,4 +1,4 @@
-# Learning Typescript
+# Run
 
 1. Run file `index.ts`
 
@@ -12,11 +12,13 @@ npm run dev
 npm run start src/(file)
 ```
 
-Ex: npm run start `src/file1.ts`
+Ex: npm run start `src/app.ts`
 
-# Branch
+# Content
 
-1. Basic Typescript: branch `typescript-baisc`
-2. Exercise Manage Students (OOP): branch `manage-students`
-3. Exercise Manage Library (OOP): branch `manage-library`
-4. Exercise Manage Students Advanced (OOP): branch `manage-students-advanced`
+Ứng dụng quản lý sinh viên lớp học
+Giao diện chính
+![Image Main](/src/img/main.png);
+
+Download source, run and relax :3 ❤️
+Thanks for watching ^^!;

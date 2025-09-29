@@ -1,4 +1,5 @@
 import { Student } from "../models/Student";
+import Table from "cli-table3";
 
 export class Classroom {
   private students: Student[] = [
@@ -11,6 +12,45 @@ export class Classroom {
     new Student(7, "Dinh An", 23, 5, 4, 4),
     new Student(8, "Gia Viet", 22, 4, 3, 3),
   ];
+  private nextId: number;
+  constructor() {
+    // Khởi tạo nextId dựa vào id lớn nhất hiện tại
+    this.nextId =
+      this.students.length > 0
+        ? Math.max(...this.students.map((s) => s.id)) + 1
+        : 1;
+  }
+
+  private renderTable(data: Student[]) {
+    const table = new Table({
+      head: ["ID", "Name", "Age", "Math", "English", "Science", "Average"],
+      colWidths: [5, 20, 5, 7, 10, 10, 10],
+    });
+    data.forEach((st) => {
+      table.push([
+        st.id,
+        st.name,
+        st.age,
+        st.scoreMath,
+        st.scoreEnglish,
+        st.scoreScience,
+        st.getAverageScore().toFixed(2),
+      ]);
+    });
+
+    console.log(table.toString());
+  }
+  addStudentAuto(
+    name: string,
+    age: number,
+    math: number,
+    eng: number,
+    sci: number
+  ) {
+    const student = new Student(this.nextId++, name, age, math, eng, sci);
+    this.students.push(student);
+    console.log("Add student successfully!");
+  }
 
   addStudent(student: Student) {
     const exists = this.students.some((st) => st.id === student.id); // return true or false
@@ -55,12 +95,14 @@ export class Classroom {
   }
 
   listStudent() {
-    console.log("Lists student in classroom: ");
-    this.students
-      .slice() //copy
-      .sort((a, b) => a.id - b.id)
-      .forEach((st) => st.displayInfo());
+    if (this.students.length === 0) {
+      console.log("❌ No students in the classroom.");
+      return;
+    }
+    console.log("📝 Lists student in classroom: ");
+    this.renderTable(this.students.slice().sort((a, b) => a.id - b.id));
   }
+
   findTopStudent() {
     if (this.students.length === 0) {
       console.log("❌ No student found.");
@@ -71,11 +113,8 @@ export class Classroom {
     const top = this.students.reduce((max, stu) =>
       stu.getAverageScore() > max.getAverageScore() ? stu : max
     );
-    console.log(
-      `🏆 Top Student: ${top.name}, Average Score: ${top
-        .getAverageScore()
-        .toFixed(2)}`
-    );
+    console.log("\n🏆 Top Student:");
+    this.renderTable([top]);
 
     // const liststu = this.students.map((stu) => {
     //   return stu;
@@ -94,36 +133,25 @@ export class Classroom {
   }
   findLowStudent() {
     console.log("Student has low average score < 5: ");
-    const liststu = this.students.map((stu) => {
-      return stu;
-    });
-
-    const newMax = liststu.filter((st) => st.getAverageScore() < 5);
-    // console.log(newMax);
-    if (newMax) {
-      newMax.forEach((st, index) => {
-        console.log(
-          `${index + 1}: ${st.name} with average score: ${st
-            .getAverageScore()
-            .toFixed(2)}`
-        );
-      });
-    } else {
-      console.log("All students are good!");
+    const lowStudents = this.students.filter((st) => st.getAverageScore() < 5);
+    if (lowStudents.length === 0) {
+      console.log("🎉 All students are good!");
+      return;
     }
+    this.renderTable(lowStudents);
   }
 
   arrangeStudentByAverage(desc: boolean = false) {
     console.log(`\n📊 Arrange students by average (${desc ? "DESC" : "ASC"}):`);
-    this.students
+    const sorted = this.students
       .slice()
       .sort((a, b) =>
         desc
           ? b.getAverageScore() - a.getAverageScore()
           : a.getAverageScore() - b.getAverageScore()
-      )
-      .forEach((st) => st.displayInfo());
+      );
 
+    this.renderTable(sorted);
     // this.students
     //   .slice() //copy
     //   .sort((a, b) => a.getAverageScore() - b.getAverageScore())
