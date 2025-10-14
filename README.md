@@ -40,7 +40,7 @@ Ex: npm run start `src/file1.ts`
   Ví dụ: Interface Shape có getArea(), còn Circle và Square implement khác nhau.
 
 | Thuộc tính    |      Mô tả    |  Ý nghĩa |
-| ------------- | :-----------: | ----: |
+| ------------- | ----------- | ----------- |
 | Encapsulation (Đóng gói) | Giấu dữ liệu, chỉ cho phép truy cập qua getter/setter | Bảo vệ dữ liệu, tránh bị sửa lung tung |
 | Inheritance (Kế thừa) | Class con dùng lại thuộc tính & phương thức của class cha | Giảm trùng lặp code |
 | Polymorphism (Đa hình) | Cùng 1 phương thức, nhưng hành vi khác nhau ở class con |    Linh hoạt trong xử lý |
