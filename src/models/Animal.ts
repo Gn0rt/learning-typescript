@@ -1,5 +1,6 @@
-// Cha (encapsulation + inheritance)
-export class Animal {
+// Abstraction: class này là nền tảng cho các loài cụ thể
+export abstract class Animal {
+  // Encapsulation: dùng private/protected để đóng gói
   constructor(private _name: string, private _age: number) {}
 
   get name() {
@@ -8,7 +9,10 @@ export class Animal {
   get age() {
     return this._age;
   }
-  makeSound(): void {
-    console.log(`${this._name} makes a sound`);
+  // Abstract method → class con bắt buộc phải implement
+  abstract makeSound(): void;
+
+  eat(food: string) {
+    console.log(`${this._name} is eating ${food}`);
   }
 }
